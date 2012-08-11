@@ -100,6 +100,14 @@
     <ClInclude Include="..\..\vmapextract\wmo.h" />
     <ClInclude Include="..\..\vmapextract\loadlib\loadlib.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\win\VC100\zlib.vcxproj">
+      <Project>{8f1dea42-6a5b-4b62-839d-c141a7bfacf2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\libmpq\win\VS100\libmpq.vcxproj">
+      <Project>{03ab0f44-628e-4855-99a0-c98a1eb52c50}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

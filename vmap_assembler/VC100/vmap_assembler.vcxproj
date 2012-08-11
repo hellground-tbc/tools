@@ -78,7 +78,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\dep\g3dlite\include;..\..\..\src\shared;..\..\..\src\game\vmap;..\..\..\src\framework;..\..\..\dep\ACE_wrappers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\src\game;..\..\..\dep\include;..\..\..\src\shared;..\..\..\src\game\vmap;..\..\..\src\framework;..\..\..\dep\ACE_wrappers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;NO_CORE_FUNCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -100,11 +100,10 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>g3dlite.lib;aced.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../../dep/lib/precompiled/Debug</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -137,7 +136,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\..\dep\g3dlite\include;..\..\..\src\shared;..\..\..\src\game\vmap;..\..\..\src\framework;..\..\..\dep\ACE_wrappers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\src\game;..\..\..\dep\include\g3dlite;..\..\..\src\shared;..\..\..\src\game\vmap;..\..\..\src\framework;..\..\..\dep\ACE_wrappers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;NO_CORE_FUNCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
@@ -156,6 +155,8 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>g3dlite.lib;ace.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../../../dep/lib/precompiled/Release</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -181,6 +182,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\game\vmap\PipeWrapper.cpp" />
+    <ClCompile Include="..\..\..\src\game\vmap\VMapCluster.cpp" />
+    <ClCompile Include="..\..\..\src\shared\Config\Config.cpp" />
+    <ClCompile Include="..\..\..\src\shared\Log.cpp" />
     <ClCompile Include="..\vmap_assembler.cpp" />
     <ClCompile Include="..\..\..\src\game\vmap\BIH.cpp" />
     <ClCompile Include="..\..\..\src\game\vmap\MapTree.cpp" />
@@ -193,10 +198,15 @@
     <ClInclude Include="..\..\..\src\game\vmap\BIH.h" />
     <ClInclude Include="..\..\..\src\game\vmap\MapTree.h" />
     <ClInclude Include="..\..\..\src\game\vmap\ModelInstance.h" />
+    <ClInclude Include="..\..\..\src\game\vmap\PipeWrapper.h" />
+    <ClInclude Include="..\..\..\src\game\vmap\PipeWrapperImpl.h" />
     <ClInclude Include="..\..\..\src\game\vmap\TileAssembler.h" />
+    <ClInclude Include="..\..\..\src\game\vmap\VMapCluster.h" />
     <ClInclude Include="..\..\..\src\game\vmap\VMapManager2.h" />
     <ClInclude Include="..\..\..\src\game\vmap\VMapTools.h" />
     <ClInclude Include="..\..\..\src\game\vmap\WorldModel.h" />
+    <ClInclude Include="..\..\..\src\shared\Config\Config.h" />
+    <ClInclude Include="..\..\..\src\shared\Log.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\win\VC100\g3dlite.vcxproj">
