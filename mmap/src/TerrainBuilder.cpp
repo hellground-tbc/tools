@@ -809,7 +809,10 @@ namespace MMAP
     {
         // no meshfile input given?
         if(offMeshFilePath == NULL)
+        {
+            printf("No offmesh file provided \n");
             return;
+        }
 
         FILE* fp = fopen(offMeshFilePath, "rb");
         if (!fp)
@@ -828,10 +831,14 @@ namespace MMAP
             float size;
             if(10 != sscanf(buf, "%d %d,%d (%f %f %f) (%f %f %f) %f", &mid, &tx, &ty,
                                     &p0[0], &p0[1], &p0[2], &p1[0], &p1[1], &p1[2], &size))
+            {
+                printf("Offmesh line format problem \n");
                 continue;
+            }
 
             if(mapID == mid, tileX == tx, tileY == ty)
             {
+                printf("Appending offmesh connection \n");
                 meshData.offMeshConnections.append(p0[1]);
                 meshData.offMeshConnections.append(p0[2]);
                 meshData.offMeshConnections.append(p0[0]);
@@ -846,6 +853,8 @@ namespace MMAP
                 meshData.offMeshConnectionsAreas.append((unsigned char)0xFF);
                 meshData.offMeshConnectionsFlags.append((unsigned short)0xFF);  // all movement masks can make this path
             }
+            //else
+            //    printf("Readed offmesh connection doesn't match. \n");
 
         }
 
