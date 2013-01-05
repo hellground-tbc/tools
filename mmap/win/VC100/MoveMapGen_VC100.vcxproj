@@ -62,7 +62,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\..\..\dep\lib\precompiled\Debug;D:\Repozytoria\HG\bin\Win32_Release_PCH\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\..\dep\lib\precompiled\Debug;..\..\..\..\bin\Win32_Release_PCH\lib</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <AdditionalDependencies>g3dlite.lib;shared.lib;aced.lib;msvcrtd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LargeAddressAware>true</LargeAddressAware>
@@ -89,7 +89,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <AdditionalDependencies>g3dlite.lib;shared.lib;ace.lib;msvcrt.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\..\dep\lib\precompiled\Release;D:\Repozytoria\HG\bin\Win32_Release_PCH\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\..\dep\lib\precompiled\Release;..\..\..\..\bin\Win32_Release_PCH\lib</AdditionalLibraryDirectories>
       <GenerateMapFile>true</GenerateMapFile>
       <LargeAddressAware>true</LargeAddressAware>
     </Link>

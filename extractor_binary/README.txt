@@ -8,7 +8,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-Copy the content of this directory into your client directory.
+Copy the content of mmaps/vmaps/maps directory into your client directory.
 
 Then just run ExtractResources.sh
 On Windows, you can run the file within the "Git bash" (which should be shipped with your Git software)
