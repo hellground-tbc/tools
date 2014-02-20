@@ -61,6 +61,7 @@ namespace MMAP
     {
         public:
             MapBuilder(float maxWalkableAngle   = 60.f,
+                       float agentRadius        = 1.5f,
                        bool skipLiquid          = false,
                        bool skipContinents      = false,
                        bool skipJunkMaps        = true,
@@ -118,6 +119,7 @@ namespace MMAP
             bool m_skipBattlegrounds;
 
             float m_maxWalkableAngle;
+            float m_agentRadius;
             bool m_bigBaseUnit;
 
             // build performance - not really used for now

@@ -29,7 +29,7 @@ using namespace VMAP;
 
 namespace MMAP
 {
-    MapBuilder::MapBuilder(float maxWalkableAngle, bool skipLiquid,
+    MapBuilder::MapBuilder(float maxWalkableAngle, float agentRadius, bool skipLiquid,
                            bool skipContinents, bool skipJunkMaps, bool skipBattlegrounds,
                            bool debugOutput, bool bigBaseUnit, const char* offMeshFilePath) :
                            m_terrainBuilder(NULL),
@@ -39,6 +39,7 @@ namespace MMAP
                            m_skipBattlegrounds  (skipBattlegrounds),
                            m_maxWalkableAngle   (maxWalkableAngle),
                            m_bigBaseUnit        (bigBaseUnit),
+                           m_agentRadius        (agentRadius),
                            m_rcContext          (NULL),
                            m_offMeshFilePath    (offMeshFilePath)
     {
@@ -416,7 +417,7 @@ namespace MMAP
         config.ch = BASE_UNIT_DIM;
         config.walkableSlopeAngle = m_maxWalkableAngle;
         config.tileSize = VERTEX_PER_TILE;
-        config.walkableRadius = m_bigBaseUnit ? 1 : 2;
+        config.walkableRadius = m_bigBaseUnit ? 1 : m_agentRadius;
         config.borderSize = config.walkableRadius + 3;
         config.maxEdgeLen = VERTEX_PER_TILE + 1;        //anything bigger than tileSize
         config.walkableHeight = m_bigBaseUnit ? 3 : 6;

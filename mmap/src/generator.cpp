@@ -63,6 +63,7 @@ bool handleArgs(int argc, char** argv,
                int &tileX,
                int &tileY,
                float &maxAngle,
+               float &agentRadius,
                bool &skipLiquid,
                bool &skipContinents,
                bool &skipJunkMaps,
@@ -86,6 +87,18 @@ bool handleArgs(int argc, char** argv,
                 maxAngle = maxangle;
             else
                 printf("invalid option for '--maxAngle', using default\n");
+        }
+        if (strcmp(argv[i], "--agentRadius") == 0)
+        {
+            param = argv[++i];
+            if (!param)
+                return false;
+
+            float radius = atof(param);
+            if (radius <= 0.f && radius >= 3.f)
+                agentRadius = radius;
+            else
+                printf("invalid option for '--agentRadius', using default\n");
         }
         else if (strcmp(argv[i], "--tile") == 0)
         {
@@ -226,6 +239,7 @@ int main(int argc, char** argv)
 {
     int mapnum = -1;
     float maxAngle = 60.0f;
+    float agentRadius = 1.5f;
     int tileX = -1, tileY = -1;
     bool skipLiquid = false,
          skipContinents = false,
@@ -237,7 +251,7 @@ int main(int argc, char** argv)
     char* offMeshInputPath = NULL;
 
     bool validParam = handleArgs(argc, argv, mapnum,
-                                 tileX, tileY, maxAngle,
+                                 tileX, tileY, maxAngle, agentRadius,
                                  skipLiquid, skipContinents, skipJunkMaps, skipBattlegrounds,
                                  debugOutput, silent, bigBaseUnit, offMeshInputPath);
 
@@ -259,7 +273,7 @@ int main(int argc, char** argv)
     if (!checkDirectories(debugOutput))
         return silent ? -3 : finish("Press any key to close...", -3);
 
-    MapBuilder builder(maxAngle, skipLiquid, skipContinents, skipJunkMaps,
+    MapBuilder builder(maxAngle, agentRadius, skipLiquid, skipContinents, skipJunkMaps,
                        skipBattlegrounds, debugOutput, bigBaseUnit, offMeshInputPath);
 
     if (tileX > -1 && tileY > -1 && mapnum >= 0)
